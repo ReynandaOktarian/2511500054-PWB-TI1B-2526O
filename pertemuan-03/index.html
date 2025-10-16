@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Judul Halaman</title>
     <style>
-        #about {
+        #about,
+        #contact {
             background-color: #ffffff;
             border-radius: 10px;
             padding: 20px;
@@ -16,12 +17,114 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        #about h2 {
+        #about h2,
+        #contact h2 {
             color: #003366;
             border-bottom: 2px solid #003366;
             padding-bottom: 6px;
             margin-bottom: 0;
             margin-bottom: 16px;
+        }
+
+        #contact label {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 0;
+            padding: 6px 0;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        #about p {
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+            margin: 0;
+            padding: 6px 0;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        #about p,
+        #contact label {
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+            margin: 0;
+            padding: 6px 0;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        #about strong,
+        #contact label>span {
+            min-width: 180px;
+            color: #003366;
+            font-weight: 600;
+            text-align: right;
+            padding-right: 16px;
+            flex-shrink: 0;
+        }
+
+        #contact input,
+        #contact textarea {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 8px;
+            color: #000;
+            font-weight: normal;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #contact button {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 10px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            margin-right: 8px;
+        }
+
+        #contact button[type="submit"] {
+            background-color: #003366;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        #contact button[type="reset"] {
+            background-color: #b4b4b4;
+            color: #272727;
+            font-weight: 500;
+        }
+
+        #contact button[type="submit"]:hover {
+            background-color: #0379ee;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #contact button[type="reset"]:hover {
+            background-color: #cccccc;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+
+            #about p,
+            #contact label {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        #about strong,
+        #contact label>span {
+            text-align: left;
+            padding-right: 0;
+            margin-bottom: 2px;
         }
     </style>
 </head>
@@ -86,183 +189,43 @@
             <p><strong>Nama Orang Tua:</strong> Bapak Mardedi dan Ibu Herlina</p>
             <p><strong>Nama Abang:</strong> Derry Andeka</p>
         </section>
-        <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Kontak dengan Styling</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            padding: 2rem;
-            line-height: 1.6;
-        }
+        <section id="contact">
+            <h2>Kontak Kami</h2>
+            <form action="" method="GET">
+                <label for="txtNama"><span>Nama:</span>
+                    <input type="text" id="txtnama" name="txtnama" placeholder="masukkan nama" required
+                        autocomplete="name">
+                </label>
+                <label for="txtemail"><span>Email</span>
+                    <input type="email" id="txtemail" name="txtemail" placeholder="Masukkan email" required
+                        autocomplete="email">
+                </label>
 
-        #contact {
-            background-color: #ffffff; 
-            border-radius: 12px; 
-            padding: 2rem; 
-            margin: 2rem auto;
-            max-width: 600px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e0e0e0; 
-        }
+                <label for="txtpesan"><span>Pesan Anda</span>
+                    <textarea id="txtpesan" name="txtpesan" rows="4" placeholder="Tulis pesan anda..."
+                        required></textarea>
+                </label>
 
-        #contact h2 {
-            color: #2c3e50; 
-            font-size: 2rem; 
-            text-align: center; 
-            margin-bottom: 1.5rem; 
-            border-bottom: 3px solid #3498db; 
-            padding-bottom: 0.5rem;
-        }
-
-        #contact input[type="color"] {
-            display: block;
-            margin: 0 auto 1.5rem; 
-            width: 50px;
-            height: 50px; 
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s; 
-        }
-
-        #contact input[type="color"]:hover {
-            transform: scale(1.1); 
-        }
-
-        #contact form {
-            display: flex;
-            flex-direction: column; 
-            gap: 1rem;
-        }
-
-        #contact label {
-            font-weight: bold; 
-            color: #34495e; 
-            font-size: 1rem;
-            margin-bottom: 0.25rem; 
-        }
-
-        #contact input[type="text"],
-        #contact input[type="email"],
-        #contact textarea {
-            width: 100%; 
-            padding: 0.75rem; 
-            border: 2px solid #bdc3c7;
-            border-radius: 6px; 
-            font-size: 1rem; 
-            transition: border-color 0.3s, box-shadow 0.3s;
-            background-color: #f8f9fa;
-        }
-
-        #contact input[type="text"]:focus,
-        #contact input[type="email"]:focus,
-        #contact textarea:focus {
-            outline: none;
-            border-color: #3498db; 
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); 
-        }
-
-        #contact textarea {
-            resize: vertical; 
-            min-height: 100px;
-        }
-
-        #contact button {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px; 
-            font-size: 1rem; 
-            font-weight: bold;
-            cursor: pointer; 
-            transition: background-color 0.3s, transform 0.2s; 
-            margin-right: 1rem; 
-            margin-top: 0.5rem; 
-        }
-
-        #contact button[type="submit"] {
-            background-color: #3498db;
-            color: white;
-        }
-
-        #contact button[type="submit"]:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px); 
-        }
-
-        #contact button[type="reset"] {
-            background-color: #e74c3c;
-            color: white;
-        }
-
-        #contact button[type="reset"]:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            #contact {
-                padding: 1.5rem;
-                margin: 1rem auto;
-            }
-
-            #contact h2 {
-                font-size: 1.5rem;
-            }
-
-            #contact button {
-                margin-right: 0;
-                margin-bottom: 0.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <section id="contact">
-        <h2>Kontak Kami</h2>
-        <form action="" method="GET">
-            <label for="txtNama">Nama:</label>
-            <input type="text" id="txtnama" name="txtnama" placeholder="masukkan nama" required autocomplete="name">
-
-            <label for="txtemail">Email:</label>
-            <input type="email" id="txtemail" name="txtemail" placeholder="Masukkan email" required autocomplete="email">
-
-            <label for="txtpesan">Pesan:</label>
-            <textarea id="txtpesan" name="txtpesan" rows="4" placeholder="Tulis pesan anda..." required></textarea>
-
-            <button type="submit">Kirim</button>
-            <button type="reset">Batal</button>
-        </form>
-    </section>
+                <button type="submit">Kirim</button>
+                <button type="reset">Batal</button>
+            </form>
+        </section>
 </body>
+
 </html>
 
-        <h2></h2>
-        <p>&copy; 2025 Reynanda Oktarian [2511500054]</p>
-        </section>
-        <section>
-            <h2></h2>
-            <p></p>
-        </section>
-    </main>
-    <footer>
-        <p></p>
-    </footer>
+<h2></h2>
+<p>&copy; 2025 Reynanda Oktarian [2511500054]</p>
+</section>
+<section>
+    <h2></h2>
+    <p></p>
+</section>
+</main>
+<footer>
+    <p></p>
+</footer>
 </body>
 
 </html>
