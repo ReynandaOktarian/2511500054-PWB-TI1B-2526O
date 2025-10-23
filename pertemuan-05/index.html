@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judul Halaman</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Ini Header</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Selamat Datang</h2>
+            <p>Ini contoh Paragraf HTML</p>
+        </section>
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <style>
+                #about p {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: baseline;
+                    margin: 0;
+                    padding: 6px 0;
+                    border-bottom: 1px solid #e6e6e6
+                }
+
+                #about strong {
+                    min-width: 180px;
+                    color: #003366;
+                    font-weight: 600;
+                    text-align: right;
+                    padding-right: 16px;
+                    flex-shrink: 0;
+                }
+
+                @media (max-width: 600px) {
+                    #about p {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+
+                    #about strong {
+                        text-align: left;
+                        padding-right: 0;
+                        margin-bottom: 2px;
+                    }
+                }
+            </style>
+            <p><strong>NIM:</strong> 2511500054</p>
+            <p><strong>Nama Lengkap:</strong> Reynanda Oktarian &#128512;</p>
+            <p><strong>Tempat Lahir:</strong> Tanjung Pandan</p>
+            <p><strong>Tanggal Lahir:</strong> 29 Oktober 2007</p>
+            <p><strong>Hobi:</strong> Menonton Anime, Mendengarkan musik, bermain game </p>
+            <p><strong>Pasangan:</strong> Belum ada </p>
+            <p><strong>Pekerjaan:</strong> Mahasiswa di ISB Atma Luhur 2025</p>
+            <p><strong>Nama Orang Tua:</strong> Bapak Mardedi dan Ibu Herlina</p>
+            <p><strong>Nama Abang:</strong> Derry Andeka</p>
+        </section>
+
+        <section id="contact">
+            <h2>Kontak Kami</h2>
+            <form action="" method="GET">
+                <label for="txtNama"><span>Nama:</span>
+                    <input type="text" id="txtnama" name="txtnama" placeholder="masukkan nama" required
+                        autocomplete="name">
+                </label>
+                <label for="txtemail"><span>Email</span>
+                    <input type="email" id="txtemail" name="txtemail" placeholder="Masukkan email" required
+                        autocomplete="email">
+                </label>
+
+                <label for="txtpesan"><span>Pesan Anda</span>
+                    <textarea id="txtpesan" name="txtpesan" rows="4" placeholder="Tulis pesan anda..."
+                        required></textarea>
+                </label>
+
+                <button type="submit">Kirim</button>
+                <button type="reset">Batal</button>
+            </form>
+        </section>
+</body>
+
+</html>
+
+<h2></h2>
+<p>&copy; 2025 Reynanda Oktarian [2511500054]</p>
+</section>
+<section>
+    <h2></h2>
+    <p></p>
+</section>
+</main>
+<footer>
+    <p></p>
+</footer>
+</body>
+
+</html>
