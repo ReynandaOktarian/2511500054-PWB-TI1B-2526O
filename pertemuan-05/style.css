@@ -71,8 +71,6 @@
       background-color: #cc04a1;
       transform: translateY(1px);
   }
-
-  @media (max-width: 600px) {
     
       header {
           padding: 16px;
@@ -80,7 +78,6 @@
           top: 0;
           z-index: 1000;
       }
-  }
 
   header h1 {
       margin: 0 0 8px;
@@ -195,6 +192,15 @@
   #contact button[type="reset"]:hover {
       background-color: #cccccc;
       transform: translateY(-1px);
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
   }
 
   @media (max-width: 600px) {
