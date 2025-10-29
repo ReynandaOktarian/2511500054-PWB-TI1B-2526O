@@ -1,0 +1,1 @@
+- [x] Fix variable name inconsistencies in pertemuan-05/script.js validation if statements
