@@ -34,11 +34,14 @@ echo "<br>Nama saya Reynanda Oktarian";
         <section id="about">
             <?php
             $NIM = "2511500054";
-            $namaLengkap = "Reynanda Oktarian";
+            $nim = "1212233132";
+            $Nim = "";
+            $nama = "Reynanda Oktarian";
+            $nama = "Reynn";
             ?>
             <h2>Tentang Saya</h2>
-            <p><strong>NIM:</strong> 2511500054<?php echo $NIM; ?></p>
-            <p><strong>Nama Lengkap:</strong> Reynanda Oktarian &#128512;</p>
+            <p><strong>NIM:</strong><?php echo $NIM; ?></p>
+            <p><strong>Nama Lengkap:</strong><?php echo $nama; ?></p>
             <p><strong>Tempat Lahir:</strong> Tanjung Pandan</p>
             <p><strong>Tanggal Lahir:</strong> 29 Oktober 2007</p>
             <p><strong>Hobi:</strong> Menonton Anime, Mendengarkan musik, bermain game </p>
