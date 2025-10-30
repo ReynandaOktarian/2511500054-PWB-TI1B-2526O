@@ -26,42 +26,18 @@
         <section id="home">
             <h2>Selamat Datang</h2>
             <p>Ini contoh Paragraf HTML</p>
+            <?php
+echo "Halo Dunia!";
+echo "<br>Nama saya Reynanda Oktarian";
+?>
         </section>
         <section id="about">
+            <?php
+            $NIM = "2511500054";
+            $namaLengkap = "Reynanda Oktarian";
+            ?>
             <h2>Tentang Saya</h2>
-            <style>
-                #about p {
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: baseline;
-                    margin: 0;
-                    padding: 6px 0;
-                    border-bottom: 1px solid #e6e6e6
-                }
-
-                #about strong {
-                    min-width: 180px;
-                    color: #003366;
-                    font-weight: 600;
-                    text-align: right;
-                    padding-right: 16px;
-                    flex-shrink: 0;
-                }
-
-                @media (max-width: 600px) {
-                    #about p {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-
-                    #about strong {
-                        text-align: left;
-                        padding-right: 0;
-                        margin-bottom: 2px;
-                    }
-                }
-            </style>
-            <p><strong>NIM:</strong> 2511500054</p>
+            <p><strong>NIM:</strong> 2511500054<?php echo $NIM; ?></p>
             <p><strong>Nama Lengkap:</strong> Reynanda Oktarian &#128512;</p>
             <p><strong>Tempat Lahir:</strong> Tanjung Pandan</p>
             <p><strong>Tanggal Lahir:</strong> 29 Oktober 2007</p>
