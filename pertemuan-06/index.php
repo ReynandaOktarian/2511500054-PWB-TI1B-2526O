@@ -201,8 +201,6 @@ echo "<br>Nama saya Reynanda Oktarian";
         </section>
 </body>
 
-</html>
-
 <h2></h2>
 <p>&copy; 2025 Reynanda Oktarian [2511500054]</p>
 </section>
