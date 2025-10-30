@@ -7,4 +7,5 @@ NIM 2511500054<br>
 Belajar<br>
 <ol>
 <li>Echo di hello.php</li>
+<li>copy index,.html, style.css, script.js (pertemuan-05)</li>
 </ol>
