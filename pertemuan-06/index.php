@@ -20,7 +20,7 @@
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#ipk">IPK</a></li>
                 <li><a href="#contact">Kontak</a></li>
-            </ul>https://walftech.com/
+            </ul>
         </nav>
     </header>
     <main>
