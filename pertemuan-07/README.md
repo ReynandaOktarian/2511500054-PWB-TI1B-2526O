@@ -13,4 +13,6 @@ Hari ini, Rabu 05.Nov.2025 saya belajar:<br>
   <li>redirect dari get_proses.php ke get.php</li>
   <li>copy paste get.php dan get_proses.php menjadi post.php dan post_proses.php</li>
   <li>sesuaikan get ke post</li>
+  <li>session_destroy</li>
+  <li>isset</li>
 </ol>
