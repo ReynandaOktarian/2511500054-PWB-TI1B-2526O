@@ -82,6 +82,10 @@ endif;
       <p><strong>Nama Adik:</strong> <?php echo $sespesan ?></p>
     </section>
 
+    <section>
+      
+    </section>
+
     <section id="contact">
       <h2>Kontak Kami</h2>
       <form action="proses.php" method="POST">
