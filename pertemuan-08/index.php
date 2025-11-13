@@ -140,6 +140,10 @@ endif;
       <h2>Kontak Kami</h2>
       <form action="proses.php" method="POST">
 
+       <label for="txtNim"><span>NIM:</span>
+          <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required autocomplete="student-id">
+        </label>
+        
         <label for="txtNama"><span>Nama:</span>
           <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
         </label>
