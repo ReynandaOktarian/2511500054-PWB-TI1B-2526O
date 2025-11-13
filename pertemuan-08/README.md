@@ -10,4 +10,6 @@ Proses saya mengerjakan UTS ini sebagai berikut:<br>
 <ol>
   <li>Menambahkan section entry data mahasiswa</li>
   <li>Menambahkan input pada section entry Data Mahasiswa</li>
+  <li>tombol Kirim diklik data dari form Entry Data Mahasiswa dikirim dengan method POST, kemudian ditampilkan ke section#about sesuai dari input penguna</li>
+  <li>menambahkan styling di section entrydata</li>
 </ol>
