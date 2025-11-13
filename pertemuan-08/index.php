@@ -86,6 +86,9 @@ endif;
       <h2>Entry Data Mahasiswa</h2>
        <form action="proses.php" method="POST">
 
+       <label for="txtNIM"><span>NIM:</span>
+          <input type="text" id="txtNIM" name="txtNIM" placeholder="Masukkan NIM" required autocomplete="studentid">
+
         <label for="txtNama"><span>Nama:</span>
           <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
         </label>
@@ -140,10 +143,6 @@ endif;
       <h2>Kontak Kami</h2>
       <form action="proses.php" method="POST">
 
-       <label for="txtNim"><span>NIM:</span>
-          <input type="text" id="txtNim" name="txtNim" placeholder="Masukkan NIM" required autocomplete="student-id">
-        </label>
-        
         <label for="txtNama"><span>Nama:</span>
           <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
         </label>
