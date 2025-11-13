@@ -9,4 +9,5 @@ Kelompok: TI1A<br>
 Proses saya mengerjakan UTS ini sebagai berikut:<br>
 <ol>
   <li>Menambahkan section entry data mahasiswa</li>
+  <li>Menambahkan input pada section entry Data Mahasiswa</li>
 </ol>

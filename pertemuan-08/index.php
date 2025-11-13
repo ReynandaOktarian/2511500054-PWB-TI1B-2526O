@@ -82,8 +82,58 @@ endif;
       <p><strong>Nama Adik:</strong> <?php echo $sespesan ?></p>
     </section>
 
-    <section>
-      
+    <section id="Entry">
+      <h2>Entry Data Mahasiswa</h2>
+       <form action="proses.php" method="POST">
+
+        <label for="txtNama"><span>Nama:</span>
+          <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
+        </label>
+
+        <label for="txtTempat"><span>Tempat Lahir:</span>
+          <input type="text" id="txtTempat" name="txtTempat" placeholder="Masukkan tempat lahir" required autocomplete="birthplace">
+        </label>
+
+        <label for="txtTanggal"><span>Tanggal Lahir:</span>
+          <input type="date" id="txtTanggal" name="txtTanggal" required>
+        </label>
+
+        <label for="txtHobi"><span>Hobi:</span>
+          <input type="text" id="txtHobi" name="txtHobi" placeholder="Masukkan hobi" required autocomplete="hobby">
+        </label>
+
+        <label for="txtPasangan"><span>Nama Pasangan:</span>
+          <input type="text" id="txtPasangan" name="txtPasangan" placeholder="Masukkan nama pasangan" autocomplete="partner">
+        </label>
+
+        <label for="txtPekerjaan"><span>Pekerjaan:</span>
+          <input type="text" id="txtPekerjaan" name="txtPekerjaan" placeholder="Masukkan pekerjaan" required autocomplete="occupation">
+        </label>
+
+        <label for="txtOrtu"><span>Nama Orang Tua:</span>
+          <input type="text" id="txtOrtu" name="txtOrtu" placeholder="Masukkan nama orang tua" required autocomplete="parentname">
+        </label>
+
+        <label for="txtKakak"><span>Nama Kakak:</span>
+          <input type="text" id="txtKakak" name="txtKakak" placeholder="Masukkan nama kakak" autocomplete="siblingname">
+        </label>
+
+        <label for="txtAdik"><span>Nama Adik:</span>
+          <input type="text" id="txtAdik" name="txtAdik" placeholder="Masukkan nama adik" autocomplete="siblingname">
+        </label>
+
+        <button type="submit">Simpan</button>
+        <button type="reset">Batal</button>
+        </form>
+
+        <?php if (!empty($sesnama)): ?>
+        <br><hr>
+        <h2>Yang menghubungi kami</h2>
+        <p><strong>Nama :</strong> <?php echo $sesnama ?></p>
+        <p><strong>Email :</strong> <?php echo $sesemail ?></p>
+        <p><strong>Pesan :</strong> <?php echo $sespesan ?></p>
+      <?php endif; ?>
+
     </section>
 
     <section id="contact">
