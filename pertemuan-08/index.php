@@ -81,8 +81,8 @@ endif;
     <nav>
       <ul>
         <li><a href="#home">Beranda</a></li>
-        <li><a href="entry">Entry Data Mahasiswa</a></li>
-        <li><a href="#about">Tentang</a></li>
+         <li><a href="#about">Tentang</a></li>
+         <li><a href="#entrydata">Entry Data Mahasiswa</a></li>
         <li><a href="#contact">Kontak</a></li>
       </ul>
     </nav>
@@ -166,16 +166,16 @@ endif;
     <section id="contact">
       <h2>Kontak Kami</h2>
       <form action="proses.php" method="post">
-        <label for="txtNama"><span>Nama:</span>
-          <input type="text" id="txtNama" name="txtNama" placeholder="Masukkan nama" required autocomplete="name">
+        <label for="txtnama"><span>Nama:</span>
+          <input type="text" id="txtnama" name="txtnama" placeholder="Masukkan nama">
         </label>
 
         <label for="txtEmail"><span>Email:</span>
-          <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email" required autocomplete="email">
+          <input type="email" id="txtEmail" name="txtEmail" placeholder="Masukkan email" >
         </label>
 
         <label for="txtPesan"><span>Pesan Anda:</span>
-          <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..." required></textarea>
+          <textarea id="txtPesan" name="txtPesan" rows="4" placeholder="Tulis pesan anda..." ></textarea>
           <small id="charCount">0/200 karakter</small>
         </label>
 
@@ -183,7 +183,9 @@ endif;
         <button type="submit">Kirim</button>
         <button type="reset">Batal</button>
       </form>
-
+      <?php if (!empty($sesnama)): ?>
+      <br><hr>
+      <?php endif; ?>
     </section>
   </main>
 
