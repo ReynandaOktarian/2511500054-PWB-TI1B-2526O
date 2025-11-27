@@ -161,6 +161,8 @@ endif;
         <?php if (!empty($sesnama)): ?>
         <br><hr>
         <?php endif; ?>
+        </form>
+        
     </section>
 
     <section id="contact">
