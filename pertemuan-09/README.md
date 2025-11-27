@@ -1,14 +1,11 @@
 # pertemuan-09
 
-<ol>
-  <li>Hasil UTS untuk bahan pertemuan-09</li>
-  <li>Membuat form untuk biodata sederhana mahasiswa</li>
-  <li>styling section biodata</li>
-  <li>styling section biodata beres</li>
-  <li>tangkap post dan buat session untuk form biodata</li>
-  <li>session form biodata beres</li>
-  <li>tangkap session dari file proses</li>
-  <li>tangkap session dari file proses selesai</li>
-  <li>echo session ke nilai label section contact</li>
-  <li>echo session ke nilai label section contact selesai</li>
-</ol>
+silahkan sesuaikan dengan milik kalian masing-masing:<br><br>
+Hari ini, Kamis 27.NOV.2025, saya:<br>
+NIM: 2511500054<br>
+Nama: Reynanda Oktarian<br>
+Kelompok: TI1B<br>
+<br>
+  <li>Extrak materi pertemuan 9</li>
+  <li>Ubah data POST ke Array Associative</li>
+  </br>
