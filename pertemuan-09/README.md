@@ -8,4 +8,6 @@ Kelompok: TI1B<br>
 <br>
   <li>Extrak materi pertemuan 9</li>
   <li>Ubah data POST ke Array Associative</li>
+  <li>Menambahkan file fungsi.php</li>
+  <li>Menambahkan kode di fungsi.php</li>
   </br>
