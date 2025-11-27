@@ -10,4 +10,5 @@ Kelompok: TI1B<br>
   <li>Ubah data POST ke Array Associative</li>
   <li>Menambahkan file fungsi.php</li>
   <li>Menambahkan kode di fungsi.php</li>
+  <li>Mengubah kode di section About</li>
   </br>
