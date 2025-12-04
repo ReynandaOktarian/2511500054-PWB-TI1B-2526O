@@ -14,4 +14,5 @@ Kelompok: TI1B<br>
 <li>Mengisi baris cnama, cemail, dan cpesan</li>
 <li>mengduplicate file read.php dan rename menjadi read_inc.php</li>
 <li>mengubah codingan di file read_inc.php</li>
+<li>mengubah sedikit codingan di index.php</li>
 </br>

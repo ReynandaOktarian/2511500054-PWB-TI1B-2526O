@@ -11,4 +11,5 @@ Kelompok: TI1B<br>
   <li>Menambahkan file fungsi.php</li>
   <li>Menambahkan kode di fungsi.php</li>
   <li>Mengubah kode di section About</li>
+  <li>Menambahkan __DIR__ di file Index</li>
   </br>
