@@ -12,4 +12,6 @@ Kelompok: TI1B<br>
 <li>Membuat tbl_tamu di phpmyadmin</li>
 <li>membuat file read.php dan membuat coding</li> 
 <li>Mengisi baris cnama, cemail, dan cpesan</li>
+<li>mengduplicate file read.php dan rename menjadi read_inc.php</li>
+<li>mengubah codingan di file read_inc.php</li>
 </br>
