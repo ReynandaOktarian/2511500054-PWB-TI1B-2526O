@@ -11,4 +11,5 @@ Kelompok: TI1B<br>
 <li>membuat database dengan nama db_pwd2025 di phpMyAdmin </li>
 <li>Membuat tbl_tamu di phpmyadmin</li>
 <li>membuat file read.php dan membuat coding</li> 
+<li>Mengisi baris cnama, cemail, dan cpesan</li>
 </br>
