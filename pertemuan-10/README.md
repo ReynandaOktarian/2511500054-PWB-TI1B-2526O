@@ -9,4 +9,5 @@ Kelompok: TI1B<br>
 <li>ekstrak materi pertemuan 11 ke folder pertemuan 10</li>
 <li>Menambahkan file koneksi.php dan menambahkan koding</li>
 <li>membuat database dengan nama db_pwd2025 di phpMyAdmin </li>
+<li>Membuat tbl_tamu di phpmyadmin</li> 
 </br>
