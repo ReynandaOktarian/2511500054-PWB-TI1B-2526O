@@ -1,12 +1,12 @@
 <?php
 session_start();
-require __DIR__ . '/koneksi.php';
+require_once __DIR__ . '/koneksi.php';
 require_once __DIR__ . '/fungsi.php';
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $_SESSION['flash-error'] = 'akses tidak valid.';
-  redirect_ke('index.php#contact');
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  $_SESSION['flash_error'] = 'akses tidak valid.';
+  header("Location: index.php#contact");
 }
 
 $nama = bersihkan($_POST['txtNama'] ?? '');
@@ -40,3 +40,48 @@ if (!empty($errors)) {
   $_SESSION['flash_error'] = implode('<br>', $errors);
   redirect_ke('index.php#contact');
 }
+
+$sql = "INSERT INTO tbl_tamu (cnama, cemail, cpesan) VALUES (?, ?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
+
+if (!$stmt) {
+  $_SESSION['flash_error'] = 'terjadi kesalahan sistem (prepare gagal)';
+  redirect_ke('index.php#contact');
+}
+
+mysqli_stmt_bind_param($stmt, 'sss', $nama, $email, $pesan);
+
+if (mysqli_stmt_execute($stmt)) {
+  unset($_SESSION['old']);
+  $_SESSION['flash_sukses'] = 'Terima kasih, data anda sudah tersimpan.';
+  header("Location: index.php#contact");
+} else {
+  $_SESSION['old'] = [
+    'nama' => $nama,
+    'email' => $email,
+    'pesan' => $pesan,
+  ];
+  $_SESSION['flash_error'] = 'Data gagal disimpan. Silahkan coba lagi.';
+  header("Location: index.php#contact");
+}
+
+mysqli_stmt_close($stmt);
+
+$_SESSION["contact"] = $arrContact;
+
+$arrBiodata = [
+    "nim" => $_POST["txtNim"] ?? "",
+    "nama" => $_POST["txtNmLengkap"] ?? "",
+    "tempat" => $_POST["txtT4Lhr"] ?? "",
+    "tanggal" => $_POST["txtTglLhr"] ?? "",
+    "hobi" => $_POST["txtHobi"] ?? "",
+    "pasangan" => $_POST["txtPasangan"] ?? "",
+    "pekerjaan" => $_POST["txtKerja"] ?? "",
+    "ortu" => $_POST["txtNmOrtu"] ?? "",
+    "kakak" => $_POST["txtNmKakak"] ?? "",
+    "adik" => $_POST["txtNmAdik"] ?? ""
+];
+$_SESSION["biodata"] = $arrBiodata;
+
+header("location: index.php#about");
+?>
