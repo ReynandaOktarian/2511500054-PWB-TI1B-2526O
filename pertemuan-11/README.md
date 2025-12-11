@@ -7,4 +7,5 @@ Nama: Reynanda Oktarian<br>
 Kelompok: TI1B<br>
 <br>
 <li>Update fungsi.php</li>
+<li>Menambahkan penangkap pesan sukses/gagal di index.php</li>
 </br>
