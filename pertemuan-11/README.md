@@ -11,4 +11,5 @@ Kelompok: TI1B<br>
 <li>Menambahkan flash massage</li>
 <li>mengubah beberapa kodingan di index.php</li>
 <li>Rewrite proses.php</li>
+<li>Ambil data $_POST, trim, htmlspecialchars.</li>
 </br>
