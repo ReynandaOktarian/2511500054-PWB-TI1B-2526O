@@ -1,25 +1,12 @@
 <?php
 session_start();
+require __DIR__ . '/koneksi.php';
+require_once __DIR__ . '/fungsi.php';
 
-$arrContact = [
-  "nama" => $_POST["txtNama"] ?? "",
-  "email" => $_POST["txtEmail"] ?? "",
-  "pesan" => $_POST["txtPesan"] ?? ""
-];
-$_SESSION["contact"] = $arrContact;
 
-$arrBiodata = [
-  "nim" => $_POST["txtNim"] ?? "",
-  "nama" => $_POST["txtNmLengkap"] ?? "",
-  "tempat" => $_POST["txtT4Lhr"] ?? "",
-  "tanggal" => $_POST["txtTglLhr"] ?? "",
-  "hobi" => $_POST["txtHobi"] ?? "",
-  "pasangan" => $_POST["txtPasangan"] ?? "",
-  "pekerjaan" => $_POST["txtKerja"] ?? "",
-  "ortu" => $_POST["txtNmOrtu"] ?? "",
-  "kakak" => $_POST["txtNmKakak"] ?? "",
-  "adik" => $_POST["txtNmAdik"] ?? ""
-];
-$_SESSION["biodata"] = $arrBiodata;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $_SESSION['flash-error'] = 'akses tidak valid.';
+  redirect_ke('index.php#contact');
+}
 
-header("location: index.php#about");
+

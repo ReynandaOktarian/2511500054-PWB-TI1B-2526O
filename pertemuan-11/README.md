@@ -10,4 +10,5 @@ Kelompok: TI1B<br>
 <li>Menambahkan penangkap pesan sukses/gagal di index.php</li>
 <li>Menambahkan flash massage</li>
 <li>mengubah beberapa kodingan di index.php</li>
+<li>Rewrite proses.php</li>
 </br>
