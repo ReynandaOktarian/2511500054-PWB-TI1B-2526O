@@ -9,4 +9,5 @@ Kelompok: TI1B<br>
 <li>Update fungsi.php</li>
 <li>Menambahkan penangkap pesan sukses/gagal di index.php</li>
 <li>Menambahkan flash massage</li>
+<li>mengubah beberapa kodingan di index.php</li>
 </br>
