@@ -12,4 +12,8 @@ Kelompok: TI1B<br>
 <li>mengubah beberapa kodingan di index.php</li>
 <li>Rewrite proses.php</li>
 <li>Ambil data $_POST, trim, htmlspecialchars.</li>
+<li>membuat validasi (tidak boleh kosong, email valid)</li>
+<li>INSERT tbl_tamu dengan prepared statement mysqli dan simpan pesan sukses/gagal ke $_SESSION serta
+redirect balik ke index.php#contact.</li>
+<li>Menambahkan kolom nomor urut dan Kolom Created At</li>
 </br>
