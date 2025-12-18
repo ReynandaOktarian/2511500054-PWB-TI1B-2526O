@@ -11,4 +11,5 @@ Kelompok: TI1B<br>
 <li>membuat file baru edit.php</li>
 <li>Buat file baru dengan nama edit.php di folder pertemuan-12 untuk menampilkan form dengan data lama yang
 dibaca berdasarkan cid (prefill form)</li>
+<li>Buat file baru dengan nama proses_update.php</li>
 </br>
