@@ -7,4 +7,5 @@ Nama: Reynanda Oktarian<br>
 Kelompok: TI1B<br>
 <br>
 <li>menambahkan tombol edit di read.php</li>
+<li>Tambahkan penampil flash sukses maupun flash error menggunakan session pada read.php</li>
 </br>
