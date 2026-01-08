@@ -7,4 +7,5 @@ Nama: Reynanda Oktarian<br>
 Kelompok: TI1B<br>
 <br>
 <li>Mengekstrak bahan praktikum pertemuan-13</li>
+<li>Menambahkan proses_delete di read.php</li>
 </br>
