@@ -13,4 +13,5 @@ Kelompok: TI1B<br>
 <li>Memperbarui kodingan di proses_delete</li>
 <li>menambahkan parameter cid untuk link delete di read.php</li>
 <li>Memperbaiki file proses_delete.php agar dapat menggunakan parameter cid</li>
+<li>Menambahkan konfirmasi penghapusan di read.php</li>
 </br>
