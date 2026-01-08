@@ -9,4 +9,5 @@ Kelompok: TI1B<br>
 <li>Mengekstrak bahan praktikum pertemuan-13</li>
 <li>Menambahkan proses_delete di read.php</li>
 <li>Membuat file baru proses_delete.php</li>
+<li>Copy proses_update ke proses_delete</li>
 </br>
