@@ -7,4 +7,5 @@ Nama: Reynanda Oktarian<br>
 Kelompok: TI1B<br>
 <tr>
 <li>membuat dan menambahkan kodingan di baca.php</li>
+<li>Membuat dan menambahkan kodingan di baca_inc.php</li>
 </tr>

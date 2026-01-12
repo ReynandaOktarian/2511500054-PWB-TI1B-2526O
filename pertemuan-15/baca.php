@@ -3,7 +3,7 @@
   require 'koneksi.php';
   require 'fungsi.php';
 
-  $sql = "SELECT * FROM tbl_mhs ORDER BY nim DESC";
+  $sql = "SELECT * FROM tbl_mhs ORDER BY cid DESC";
   $q = mysqli_query($conn, $sql);
   if (!$q) {
     die("Query error: " . mysqli_error($conn));
@@ -33,6 +33,9 @@
 
 <table border="1" cellpadding="8" cellspacing="0">
   <tr>
+    <th>no</th>
+    <th>aksi</th>
+    <th>cid</th>
     <th>nim</th>
     <th>nm_lengkap</th>
     <th>tempat_lahir</th>
@@ -51,10 +54,11 @@
     <tr>
       <td><?= $i++ ?></td>
       <td>
-        <a href="edit.php?nim=<?= (int)$row['nim']; ?>">Edit</a>
-        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?nim=<?= (int)$row['nim']; ?>">Delete</a>
+        <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
+        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?cid=<?= (int)$row['cid']; ?>">Delete</a>
       </td>
-      <td><?= $row['nim']; ?></td>
+      <td><?= $row['cid']; ?></td>
+      <td><?= htmlspecialchars($row['nim']); ?></td>
       <td><?= htmlspecialchars($row['nm_lengkap']); ?></td>
       <td><?= htmlspecialchars($row['tempat_lahir']); ?></td>
       <td><?= htmlspecialchars($row['tgl_lahir']); ?></td>
