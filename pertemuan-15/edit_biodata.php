@@ -61,7 +61,10 @@
       <form action="proses_update_biodata.php" method="POST">
         <input type="hidden" name="bid" value="<?= $bid ?>">
 
-        <label>NIM: <input type="text" name="txtNim" value="<?= htmlspecialchars($d['nim']) ?>" required></label><br>
+       <label>NIM: 
+       <input type="text" name="txtNim" value="<?= htmlspecialchars($d['nim']) ?>" 
+        readonly style="background-color: #e9ecef; cursor: not-allowed;">
+         </label><br>
         <label>Nama: <input type="text" name="txtNmLengkap" value="<?= htmlspecialchars($d['nama']) ?>" required></label><br>
         <label>Tempat Lahir: <input type="text" name="txtTmpLhr" value="<?= htmlspecialchars($d['tempat']) ?>" required></label><br>
         <label>Tgl Lahir: <input type="date" name="txtTglLhr" value="<?= htmlspecialchars($d['tanggal']) ?>" required></label><br>
