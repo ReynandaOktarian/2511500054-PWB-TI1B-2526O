@@ -50,8 +50,8 @@ require_once __DIR__ . '/fungsi.php';
           <input type="text" id="txtNmLengkap" name="txtNmLengkap" placeholder="Masukkan Nama Lengkap" required>
         </label>
 
-        <label for="txtT4Lhr"><span>Tempat Lahir:</span>
-          <input type="text" id="txtT4Lhr" name="txtT4Lhr" placeholder="Masukkan Tempat Lahir" required>
+        <label for="txtTmplhr"><span>Tempat Lahir:</span>
+          <input type="text" id="txtTmplhr" name="txtTmpLhr" placeholder="Masukkan Tempat Lahir" required>
         </label>
 
         <label for="txtTglLhr"><span>Tanggal Lahir:</span>

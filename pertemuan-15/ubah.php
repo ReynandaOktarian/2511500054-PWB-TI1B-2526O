@@ -130,8 +130,8 @@
           <input type="text" id="txtNmLengkap" name="txtNmLengkap" placeholder="Masukkan Nama Lengkap" required>
         </label>
 
-        <label for="txtT4Lhr"><span>Tempat Lahir:</span>
-          <input type="text" id="txtT4Lhr" name="txtT4Lhr" placeholder="Masukkan Tempat Lahir" required>
+        <label for="txtTmpLhr"><span>Tempat Lahir:</span>
+          <input type="text" id="txtTmpLhr" name="txtTmpLhr" placeholder="Masukkan Tempat Lahir" required>
         </label>
 
         <label for="txtTglLhr"><span>Tanggal Lahir:</span>
