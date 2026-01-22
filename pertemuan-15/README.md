@@ -14,4 +14,5 @@ Kelompok: TI1B<br>
 <li>menambahkan kodingan di Proses_update_biodata.php</li>
 <li>Membuat file baru proses_delete_biodata.php</li>
 <li>Menambahkan kodingan di Proses_delete_biodata</li>
+<li>Update kodingan edit_Biodata.php agar nim tidak bisa diubah</li>
 </tr>
