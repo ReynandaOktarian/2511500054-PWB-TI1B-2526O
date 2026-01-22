@@ -35,9 +35,9 @@ if (empty($nama) || empty($alamat)) {
     redirect_ke('edit_Pengunjung.php?bid=' . $bid);
 }
 
-$sql = "UPDATE tbl_biodata SET 
-        cnim=?, cnama=?, ctempat_lahir=?, dtanggal_lahir=?, 
-        chobi=?, cpasangan=?, cpekerjaan=?, cnama_ortu=?, cnama_kakak=?, cnama_adik=?
+$sql = "UPDATE biodata_pengunjung SET 
+        cnama=?, calamat=?, ctanggal=?, 
+        chobi=?, casal_sma=?, cpekerjaan=?, cnama_ortu=?, cnama_pacar=?, cnama_mantan=?
         WHERE bid=?";
 
 $stmt = mysqli_prepare($conn, $sql);

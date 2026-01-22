@@ -6,8 +6,7 @@ require_once __DIR__ . '/fungsi.php';
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirect_ke('index.php');
 }
-
-    $kode       = bersihkan($_POST['txtKodePen'] ?? '');
+    $bid        = bersihkan($_POST['txtKodePen'] ?? '');
     $nama       = bersihkan($_POST['txtNmPengunjung'] ?? '');
     $alamat     = bersihkan($_POST['txtAlRmh'] ?? '');
     $tgl        = bersihkan($_POST['txtTglKunjungan'] ?? '');
@@ -19,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $mantan     = bersihkan($_POST['txtNmMantan'] ?? '');
 
     $errors = [];
-    if (empty($kode) || empty($nama) || empty($alamat) || empty($tgl)) {
-        $errors[] = 'Kode, Nama, Alamat, dan Tanggal Kunjungan wajib diisi.';
-    }
+      if (empty($bid) || empty($nama) || empty($alamat) || empty($tgl)) {
+          $errors[] = 'Kode, Nama, Alamat, dan Tanggal Kunjungan wajib diisi.';
+      }
 
     if (!empty($errors)) {
         $_SESSION['old_bio'] = $_POST;
@@ -30,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     }
 
     $sql = "INSERT INTO biodata_pengunjung 
-            (kode_pengunjung, nama_pengunjung, alamat_rumah, tgl_kunjungan, hobi, asal_slta, pekerjaan, nama_ortu, nama_pacar, nama_mantan) 
+            (bid, nama_pengunjung, alamat_rumah, tgl_kunjungan, hobi, asal_slta, pekerjaan, nama_ortu, nama_pacar, nama_mantan) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = mysqli_prepare($conn, $sql);
 
             if ($stmt) {
         mysqli_stmt_bind_param($stmt, "ssssssssss", 
-            $kode, $nama, $alamat, $tgl, $hobi, $asal_sma, $pekerjaan, $ortu, $pacar, $mantan
+            $bid, $nama, $alamat, $tgl, $hobi, $asal_sma, $pekerjaan, $ortu, $pacar, $mantan
         );
 
         if (mysqli_stmt_execute($stmt)) {

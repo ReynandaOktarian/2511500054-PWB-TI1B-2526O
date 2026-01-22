@@ -9,7 +9,7 @@
     die("Query error: " . mysqli_error($conn));
   }
   
-  $sqlBio = "SELECT * FROM biodata_pengunjung ORDER BY kode_pengunjung DESC";
+  $sqlBio = "SELECT * FROM biodata_pengunjung ORDER BY bid DESC";
   $qBio = mysqli_query($conn, $sqlBio);
   if (!$qBio) die("Query Biodata error: " . mysqli_error($conn));
 ?>
