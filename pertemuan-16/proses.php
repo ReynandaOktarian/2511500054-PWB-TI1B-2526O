@@ -22,6 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     if (empty($kode) || empty($nama) || empty($alamat) || empty($tgl)) {
         $errors[] = 'Kode, Nama, Alamat, dan Tanggal Kunjungan wajib diisi.';
     }
+
+    if (!empty($errors)) {
+        $_SESSION['old_bio'] = $_POST;
+        $_SESSION['flash_error_bio'] = implode('<br>', $errors);
+        redirect_ke('index.php#biodata');
+
+        
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   $_SESSION['flash_error'] = 'Akses tidak valid.';
