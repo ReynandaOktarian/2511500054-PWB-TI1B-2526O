@@ -3,6 +3,21 @@ session_start();
 require __DIR__ . './koneksi.php';
 require_once __DIR__ . '/fungsi.php';
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    redirect_ke('index.php');
+}
+
+    $kode       = bersihkan($_POST['txtKodePen'] ?? '');
+    $nama       = bersihkan($_POST['txtNmPengunjung'] ?? '');
+    $alamat     = bersihkan($_POST['txtAlRmh'] ?? '');
+    $tgl        = bersihkan($_POST['txtTglKunjungan'] ?? '');
+    $hobi       = bersihkan($_POST['txtHobi'] ?? '');
+    $asal_sma   = bersihkan($_POST['txtAsalSMA'] ?? '');
+    $pekerjaan  = bersihkan($_POST['txtKerja'] ?? '');
+    $ortu       = bersihkan($_POST['txtNmOrtu'] ?? '');
+    $pacar      = bersihkan($_POST['txtNmPacar'] ?? '');
+    $mantan     = bersihkan($_POST['txtNmMantan'] ?? '');
+
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   $_SESSION['flash_error'] = 'Akses tidak valid.';
