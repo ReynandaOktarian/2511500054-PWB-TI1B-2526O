@@ -107,7 +107,7 @@
       <tr>
         <td><?= $j++ ?></td>
         <td style="white-space: nowrap;">
-           <a class="btn-edit" href="edit_biodata.php?kode=<?= urlencode($bio['kode_pengunjung']); ?>">Edit</a> |
+           <a class="btn-edit" href="edit_pengunjung.php?bid=<?= urlencode($bio['kode_pengunjung']); ?>">Edit</a>
            <a class="btn-del" onclick="return confirm('Hapus Biodata <?= htmlspecialchars($bio['nama_pengunjung']); ?>?')" href="hapus_biodata.php?kode=<?= urlencode($bio['kode_pengunjung']); ?>">Hapus</a>
         </td>
         <td><?= htmlspecialchars($bio['kode_pengunjung']); ?></td>
