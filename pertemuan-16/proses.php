@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $pacar      = bersihkan($_POST['txtNmPacar'] ?? '');
     $mantan     = bersihkan($_POST['txtNmMantan'] ?? '');
 
+    $errors = [];
+    if (empty($kode) || empty($nama) || empty($alamat) || empty($tgl)) {
+        $errors[] = 'Kode, Nama, Alamat, dan Tanggal Kunjungan wajib diisi.';
+    }
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   $_SESSION['flash_error'] = 'Akses tidak valid.';
