@@ -3,13 +3,16 @@
   require 'koneksi.php';
   require 'fungsi.php';
 
+  // Query Buku Tamu
   $sql = "SELECT * FROM tbl_tamu ORDER BY cid DESC";
   $q = mysqli_query($conn, $sql);
   if (!$q) {
     die("Query error: " . mysqli_error($conn));
   }
   
-  $sqlBio = "SELECT * FROM biodata_pengunjung ORDER BY bid DESC";
+  // Query Biodata Pengunjung
+  // PERBAIKAN: Order by tgl_kunjungan atau kode_pengunjung
+  $sqlBio = "SELECT * FROM biodata_pengunjung ORDER BY tgl_kunjungan DESC";
   $qBio = mysqli_query($conn, $sqlBio);
   if (!$qBio) die("Query Biodata error: " . mysqli_error($conn));
 ?>
@@ -27,6 +30,8 @@
     .alert { padding:10px; margin-bottom:10px; border-radius:6px; }
     .alert-success { background:#d4edda; color:#155724; }
     .alert-danger { background:#f8d7da; color:#721c24; }
+    .btn-edit { color: blue; text-decoration: none; margin-right: 5px; }
+    .btn-del { color: red; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -34,28 +39,21 @@
 <h1>Halaman Administrator</h1>
 <a href="index.php">Ke Halaman Depan</a>
 
-
 <?php
-  $flash_sukses = $_SESSION['flash_sukses'] ?? ''; #jika query sukses
-  $flash_error  = $_SESSION['flash_error'] ?? ''; #jika ada error
-  #bersihkan session ini
+  $flash_sukses = $_SESSION['flash_sukses'] ?? ''; 
+  $flash_error  = $_SESSION['flash_error'] ?? ''; 
   unset($_SESSION['flash_sukses'], $_SESSION['flash_error']); 
 ?>
 
 <?php if (!empty($flash_sukses)): ?>
-        <div style="padding:10px; margin-bottom:10px; 
-          background:#d4edda; color:#155724; border-radius:6px;">
-          <?= $flash_sukses; ?>
-        </div>
+    <div class="alert alert-success"><?= $flash_sukses; ?></div>
 <?php endif; ?>
 
 <?php if (!empty($flash_error)): ?>
-        <div style="padding:10px; margin-bottom:10px; 
-          background:#f8d7da; color:#721c24; border-radius:6px;">
-          <?= $flash_error; ?>
-        </div>
+    <div class="alert alert-danger"><?= $flash_error; ?></div>
 <?php endif; ?>
 
+<h2>Data Buku Tamu</h2>
 <table border="1" cellpadding="8" cellspacing="0">
   <tr>
     <th>No</th>
@@ -71,14 +69,14 @@
     <tr>
       <td><?= $i++ ?></td>
       <td>
-        <a href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
-        <a onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?cid=<?= (int)$row['cid']; ?>">Delete</a>
+        <a class="btn-edit" href="edit.php?cid=<?= (int)$row['cid']; ?>">Edit</a>
+        <a class="btn-del" onclick="return confirm('Hapus <?= htmlspecialchars($row['cnama']); ?>?')" href="proses_delete.php?cid=<?= (int)$row['cid']; ?>">Delete</a>
       </td>
       <td><?= $row['cid']; ?></td>
       <td><?= htmlspecialchars($row['cnama']); ?></td>
       <td><?= htmlspecialchars($row['cemail']); ?></td>
       <td><?= nl2br(htmlspecialchars($row['cpesan'])); ?></td>
-      <td><?= formatTanggal(htmlspecialchars($row['dcreated_at'])); ?></td>
+      <td><?= isset($row['dcreated_at']) ? htmlspecialchars($row['dcreated_at']) : '-'; ?></td>
     </tr>
   <?php endwhile; ?>
 </table>
@@ -130,3 +128,6 @@
     <?php endif; ?>
   </tbody>
 </table>
+
+</body>
+</html>
