@@ -8,6 +8,10 @@
   if (!$q) {
     die("Query error: " . mysqli_error($conn));
   }
+  
+  $sqlBio = "SELECT * FROM tbl_biodata ORDER BY bid DESC";
+  $qBio = mysqli_query($conn, $sqlBio);
+  if (!$qBio) die("Query Biodata error: " . mysqli_error($conn));
 ?>
 
 <?php
