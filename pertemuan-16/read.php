@@ -10,9 +10,7 @@
     die("Query error: " . mysqli_error($conn));
   }
   
-  // Query Biodata Pengunjung
-  // PERBAIKAN: Order by tgl_kunjungan atau kode_pengunjung
-  $sqlBio = "SELECT * FROM biodata_pengunjung ORDER BY tgl_kunjungan DESC";
+  $sqlBio = "SELECT * FROM biodata_pengunjung ORDER BY bid DESC";
   $qBio = mysqli_query($conn, $sqlBio);
   if (!$qBio) die("Query Biodata error: " . mysqli_error($conn));
 ?>
