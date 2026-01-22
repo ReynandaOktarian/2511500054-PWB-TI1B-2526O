@@ -27,7 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $_SESSION['old_bio'] = $_POST;
         $_SESSION['flash_error_bio'] = implode('<br>', $errors);
         redirect_ke('index.php#biodata');
+    }
 
+    $sql = "INSERT INTO biodata_pengunjung 
+            (kode_pengunjung, nama_pengunjung, alamat_rumah, tgl_kunjungan, hobi, asal_slta, pekerjaan, nama_ortu, nama_pacar, nama_mantan) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
