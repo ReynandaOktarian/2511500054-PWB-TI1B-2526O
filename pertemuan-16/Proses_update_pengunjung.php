@@ -30,13 +30,11 @@ $mantan     = bersihkan($_POST['txtNmMantan'] ?? '');
 // 3. Validasi
 if (empty($nama) || empty($alamat) || empty($tanggal)) {
     $_SESSION['flash_error'] = 'Nama, Alamat, dan Tanggal wajib diisi.';
-    // Simpan input user agar tidak hilang
     $_SESSION['old_bio'] = $_POST;
     redirect_ke('edit_pengunjung.php?bid=' . urlencode($kode_lama));
 }
 
 // 4. Update Database
-// PERBAIKAN: Nama kolom disesuaikan dengan tabel biodata_pengunjung
 $sql = "UPDATE biodata_pengunjung SET 
         kode_pengunjung=?, 
         nama_pengunjung=?, 
