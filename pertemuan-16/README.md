@@ -13,4 +13,5 @@ Kelompok: TI1B<br>
 <li>Menyelesaikan Proses.php</li>
 <li>Menambahkan kodingan di read.php<li>
 <li>Membuat file baru Proses_update_pengunjung.php</li>
+<li>Menambahkan kodingan baru di proses_update_pengunjung.php</li>
 </tr>
