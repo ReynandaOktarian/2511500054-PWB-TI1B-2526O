@@ -117,4 +117,21 @@ if (isset($_POST['txtKodePen'])) {
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "sss", $nama, $email, $pesan);
         if (mysqli_stmt_execute($stmt)) {
-            unset($_
+            unset($_SESSION['old']);
+            $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah tersimpan.';
+        } else {
+            $_SESSION['old'] = ['nama' => $nama, 'email' => $email, 'pesan' => $pesan, 'captcha' => $captcha];
+            $_SESSION['flash_error'] = 'Data gagal disimpan. Silakan coba lagi.';
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        $_SESSION['flash_error'] = 'Terjadi kesalahan sistem.';
+    }
+
+    redirect_ke('index.php#contact');
+
+} else {
+    // Jika post dikirim tapi tidak dikenali
+    redirect_ke('index.php');
+}
+?>
