@@ -1,12 +1,21 @@
 <?php
 session_start();
-require __DIR__ . './koneksi.php';
+require __DIR__ . '/koneksi.php'; // Hapus ./ yang berlebihan
 require_once __DIR__ . '/fungsi.php';
 
+// Cek Method
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     redirect_ke('index.php');
 }
-    $bid        = bersihkan($_POST['txtKodePen'] ?? '');
+
+// ==========================================================
+// BAGIAN 1: PROSES FORM BIODATA
+// (Dideteksi jika ada input 'txtKodePen')
+// ==========================================================
+if (isset($_POST['txtKodePen'])) {
+    
+    // Ambil data
+    $kode       = bersihkan($_POST['txtKodePen'] ?? '');
     $nama       = bersihkan($_POST['txtNmPengunjung'] ?? '');
     $alamat     = bersihkan($_POST['txtAlRmh'] ?? '');
     $tgl        = bersihkan($_POST['txtTglKunjungan'] ?? '');
@@ -18,31 +27,46 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $mantan     = bersihkan($_POST['txtNmMantan'] ?? '');
 
     $errors = [];
-      if (empty($bid) || empty($nama) || empty($alamat) || empty($tgl)) {
-          $errors[] = 'Kode, Nama, Alamat, dan Tanggal Kunjungan wajib diisi.';
-      }
+    
+    // [PERBAIKAN ERROR SCREENSHOT DI SINI]
+    // Menambahkan kurung buka '(' dan tutup ')'
+    if (empty($kode) || empty($nama) || empty($alamat) || empty($tgl)) {
+        $errors[] = 'Kode, Nama, Alamat, dan Tanggal Kunjungan wajib diisi.';
+    }
 
+    // Jika ada error, kembalikan data lama dan redirect
     if (!empty($errors)) {
         $_SESSION['old_bio'] = $_POST;
         $_SESSION['flash_error_bio'] = implode('<br>', $errors);
         redirect_ke('index.php#biodata');
     }
 
+    // Query Insert 
+    // PERBAIKAN: Mengubah kolom 'bid' menjadi 'kode_pengunjung' sesuai tabel database
     $sql = "INSERT INTO biodata_pengunjung 
-            (bid, nama_pengunjung, alamat_rumah, tgl_kunjungan, hobi, asal_slta, pekerjaan, nama_ortu, nama_pacar, nama_mantan) 
+            (kode_pengunjung, nama_pengunjung, alamat_rumah, tgl_kunjungan, hobi, asal_slta, pekerjaan, nama_ortu, nama_pacar, nama_mantan) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            $stmt = mysqli_prepare($conn, $sql);
+    $stmt = mysqli_prepare($conn, $sql);
 
-            if ($stmt) {
+    if ($stmt) {
         mysqli_stmt_bind_param($stmt, "ssssssssss", 
-            $bid, $nama, $alamat, $tgl, $hobi, $asal_sma, $pekerjaan, $ortu, $pacar, $mantan
+            $kode, $nama, $alamat, $tgl, $hobi, $asal_sma, $pekerjaan, $ortu, $pacar, $mantan
         );
 
         if (mysqli_stmt_execute($stmt)) {
             $_SESSION['flash_sukses_bio'] = 'Biodata Pengunjung berhasil disimpan!';
             unset($_SESSION['old_bio']); 
+            
+            // Opsional: Simpan ke session biodata untuk ditampilkan di About
+            $_SESSION["biodata"] = [
+                "kodepen" => $kode, "nama" => $nama, "alamat" => $alamat,
+                "tanggal" => $tgl, "hobi" => $hobi, "slta" => $asal_sma,
+                "pekerjaan" => $pekerjaan, "ortu" => $ortu, "pacar" => $pacar, "mantan" => $mantan
+            ];
+            
         } else {
+            // Cek duplikat primary key
             if (mysqli_errno($conn) == 1062) {
                 $_SESSION['flash_error_bio'] = 'Gagal: Kode Pengunjung sudah terdaftar.';
             } else {
@@ -56,110 +80,41 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     }
 
     redirect_ke('index.php#biodata');
-      
-        
-#cek method form, hanya izinkan POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  $_SESSION['flash_error'] = 'Akses tidak valid.';
-  redirect_ke('index.php#contact');
-}
 
-#ambil dan bersihkan nilai dari form
-$nama  = bersihkan($_POST['txtNama']  ?? '');
-$email = bersihkan($_POST['txtEmail'] ?? '');
-$pesan = bersihkan($_POST['txtPesan'] ?? '');
-$captcha = bersihkan($_POST['txtCaptcha'] ?? '');
+// ==========================================================
+// BAGIAN 2: PROSES FORM KONTAK / BUKU TAMU
+// (Dideteksi jika ada input 'txtEmail' atau tombol submit kontak)
+// ==========================================================
+} elseif (isset($_POST['txtEmail']) || isset($_POST['txtPesan'])) {
 
-#Validasi sederhana
-$errors = []; #ini array untuk menampung semua error yang ada
+    $nama    = bersihkan($_POST['txtNama']  ?? '');
+    $email   = bersihkan($_POST['txtEmail'] ?? '');
+    $pesan   = bersihkan($_POST['txtPesan'] ?? '');
+    $captcha = bersihkan($_POST['txtCaptcha'] ?? '');
 
-if ($nama === '') {
-  $errors[] = 'Nama wajib diisi.';
-}
+    $errors = [];
 
-if ($email === '') {
-  $errors[] = 'Email wajib diisi.';
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $errors[] = 'Format e-mail tidak valid.';
-}
+    if ($nama === '') { $errors[] = 'Nama wajib diisi.'; }
+    if ($email === '') { $errors[] = 'Email wajib diisi.'; }
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $errors[] = 'Format e-mail tidak valid.'; }
+    
+    if ($pesan === '') { $errors[] = 'Pesan wajib diisi.'; }
+    if ($captcha === '') { $errors[] = 'Pertanyaan wajib diisi.'; }
+    
+    if (mb_strlen($nama) < 3) { $errors[] = 'Nama minimal 3 karakter.'; }
+    if (mb_strlen($pesan) < 10) { $errors[] = 'Pesan minimal 10 karakter.'; }
+    if ($captcha !== "5") { $errors[] = 'Jawaban captcha salah.'; }
 
-if ($pesan === '') {
-  $errors[] = 'Pesan wajib diisi.';
-}
+    if (!empty($errors)) {
+        $_SESSION['old'] = ['nama' => $nama, 'email' => $email, 'pesan' => $pesan, 'captcha' => $captcha];
+        $_SESSION['flash_error'] = implode('<br>', $errors);
+        redirect_ke('index.php#contact');
+    }
 
-if ($captcha === '') {
-  $errors[] = 'Pertanyaan wajib diisi.';
-}
+    $sql = "INSERT INTO tbl_tamu (cnama, cemail, cpesan) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
 
-if (mb_strlen($nama) < 3) {
-  $errors[] = 'Nama minimal 3 karakter.';
-}
-
-if (mb_strlen($pesan) < 10) {
-  $errors[] = 'Pesan minimal 10 karakter.';
-}
-
-if ($captcha!=="5") {
-  $errors[] = 'Jawaban '. $captcha.' captcha salah.';
-}
-
-/*
-kondisi di bawah ini hanya dikerjakan jika ada error, 
-simpan nilai lama dan pesan error, lalu redirect (konsep PRG)
-*/
-if (!empty($errors)) {
-  $_SESSION['old'] = [
-    'nama'  => $nama,
-    'email' => $email,
-    'pesan' => $pesan,
-    'captcha' => $captcha,
-  ];
-
-  $_SESSION['flash_error'] = implode('<br>', $errors);
-  redirect_ke('index.php#contact');
-}
-
-#menyiapkan query INSERT dengan prepared statement
-$sql = "INSERT INTO tbl_tamu (cnama, cemail, cpesan) VALUES (?, ?, ?)";
-$stmt = mysqli_prepare($conn, $sql);
-
-if (!$stmt) {
-  #jika gagal prepare, kirim pesan error ke pengguna (tanpa detail sensitif)
-  $_SESSION['flash_error'] = 'Terjadi kesalahan sistem (prepare gagal).';
-  redirect_ke('index.php#contact');
-}
-#bind parameter dan eksekusi (s = string)
-mysqli_stmt_bind_param($stmt, "sss", $nama, $email, $pesan);
-
-if (mysqli_stmt_execute($stmt)) { #jika berhasil, kosongkan old value, beri pesan sukses
-  unset($_SESSION['old']);
-  $_SESSION['flash_sukses'] = 'Terima kasih, data Anda sudah tersimpan.';
-  redirect_ke('index.php#contact'); #pola PRG: kembali ke form / halaman home
-} else { #jika gagal, simpan kembali old value dan tampilkan error umum
-  $_SESSION['old'] = [
-    'nama'  => $nama,
-    'email' => $email,
-    'pesan' => $pesan,
-    'captcha' => $captcha,
-  ];
-  $_SESSION['flash_error'] = 'Data gagal disimpan. Silakan coba lagi.';
-  redirect_ke('index.php#contact');
-}
-#tutup statement
-mysqli_stmt_close($stmt);
-
-$arrBiodata = [
-  "kodepen" => $_POST["txtKodePen"] ?? "",
-  "nama" => $_POST["txtNmPengunjung"] ?? "",
-  "alamat" => $_POST["txtAlRmh"] ?? "",
-  "tanggal" => $_POST["txtTglKunjungan"] ?? "",
-  "hobi" => $_POST["txtHobi"] ?? "",
-  "slta" => $_POST["txtAsalSMA"] ?? "",
-  "pekerjaan" => $_POST["txtKerja"] ?? "",
-  "ortu" => $_POST["txtNmOrtu"] ?? "",
-  "pacar" => $_POST["txtNmPacar"] ?? "",
-  "mantan" => $_POST["txtNmMantan"] ?? ""
-];
-$_SESSION["biodata"] = $arrBiodata;
-
-header("location: index.php#about");
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "sss", $nama, $email, $pesan);
+        if (mysqli_stmt_execute($stmt)) {
+            unset($_
