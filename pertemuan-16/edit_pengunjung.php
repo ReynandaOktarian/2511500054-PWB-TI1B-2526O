@@ -3,8 +3,7 @@
   require 'koneksi.php';
   require 'fungsi.php';
 
-  // 1. Ambil Parameter Kode Pengunjung dari URL
-  // Karena tipe datanya String (VARCHAR), kita ambil langsung dari $_GET
+  // 1. Ambil Parameter Kode Pengunjung dari URL (bid)
   $bid = $_GET['bid'] ?? '';
 
   if (empty($bid)) {
@@ -13,7 +12,8 @@
   }
 
   // 2. Query Data dari Database
-  $stmt = mysqli_prepare($conn, "SELECT * FROM biodata_pengunjung WHERE bid_pengunjung = ?");
+  // Pastikan WHERE menggunakan 'kode_pengunjung'
+  $stmt = mysqli_prepare($conn, "SELECT * FROM biodata_pengunjung WHERE kode_pengunjung = ?");
   mysqli_stmt_bind_param($stmt, "s", $bid);
   mysqli_stmt_execute($stmt);
   $res = mysqli_stmt_get_result($stmt);
@@ -27,15 +27,13 @@
   }
 
   // 3. Persiapan Data untuk Form
-  // Cek apakah ada data 'old' (inputan user sebelumnya yang gagal validasi)
-  // Jika tidak ada, pakai data dari database ($row)
   $flash_error = $_SESSION['flash_error'] ?? '';
   $old = $_SESSION['old_bio'] ?? []; 
   unset($_SESSION['flash_error'], $_SESSION['old_bio']);
 
-  // Mapping data ke variabel array agar form lebih rapi
+  // Mapping data
   $d = [
-    'bid'      => $old['txtKodePen'] ?? $row['kode_pengunjung'],
+    'kode'      => $old['txtKodePen'] ?? $row['kode_pengunjung'],
     'nama'      => $old['txtNmPengunjung'] ?? $row['nama_pengunjung'],
     'alamat'    => $old['txtAlRmh'] ?? $row['alamat_rumah'],
     'tanggal'   => $old['txtTglKunjungan'] ?? $row['tgl_kunjungan'],
@@ -54,12 +52,12 @@
   <meta charset="UTF-8">
   <title>Edit Biodata Pengunjung</title>
   <style>
-      /* Style sederhana agar form terlihat rapi */
       body { font-family: sans-serif; padding: 20px; }
       label { display: block; margin-top: 10px; font-weight: bold; }
       input[type=text], input[type=date] { width: 100%; padding: 8px; margin-top: 5px; max-width: 400px; display:block;}
       button { margin-top: 20px; padding: 10px 20px; cursor: pointer; background: blue; color: white; border: none;}
       a { display: inline-block; margin-top: 20px; margin-left: 10px; color: red; text-decoration: none;}
+      .alert { background:#f8d7da; color:#721c24; padding:10px; margin-bottom:10px; border-radius: 5px; }
   </style>
 </head>
 <body>
@@ -68,44 +66,42 @@
       <h2>Edit Biodata Pengunjung</h2>
       
       <?php if (!empty($flash_error)): ?>
-        <div style="background:#f8d7da; color:#721c24; padding:10px; margin-bottom:10px; border-radius: 5px;">
-          <?= $flash_error; ?>
-        </div>
+        <div class="alert"><?= $flash_error; ?></div>
       <?php endif; ?>
 
-      <form action="proses_update_biodata.php" method="POST">
+      <form action="Proses_update_pengunjung.php" method="POST">
         
         <input type="hidden" name="kode_lama" value="<?= htmlspecialchars($row['kode_pengunjung']) ?>">
 
-        <label for="txtKodePen">Kode Pengunjung:</label>
-        <input type="text" id="txtKodePen" name="txtKodePen" value="<?= htmlspecialchars($d['bid']) ?>" required>
+        <label>Kode Pengunjung:</label>
+        <input type="text" name="txtKodePen" value="<?= htmlspecialchars($d['kode']) ?>" required>
 
-        <label for="txtNmPengunjung">Nama Pengunjung:</label>
-        <input type="text" id="txtNmPengunjung" name="txtNmPengunjung" value="<?= htmlspecialchars($d['nama']) ?>" required>
+        <label>Nama Pengunjung:</label>
+        <input type="text" name="txtNmPengunjung" value="<?= htmlspecialchars($d['nama']) ?>" required>
 
-        <label for="txtAlRmh">Alamat Rumah:</label>
-        <input type="text" id="txtAlRmh" name="txtAlRmh" value="<?= htmlspecialchars($d['alamat']) ?>" required>
+        <label>Alamat Rumah:</label>
+        <input type="text" name="txtAlRmh" value="<?= htmlspecialchars($d['alamat']) ?>" required>
 
-        <label for="txtTglKunjungan">Tanggal Kunjungan:</label>
-        <input type="date" id="txtTglKunjungan" name="txtTglKunjungan" value="<?= htmlspecialchars($d['tanggal']) ?>" required>
+        <label>Tanggal Kunjungan:</label>
+        <input type="date" name="txtTglKunjungan" value="<?= htmlspecialchars($d['tanggal']) ?>" required>
 
-        <label for="txtHobi">Hobi:</label>
-        <input type="text" id="txtHobi" name="txtHobi" value="<?= htmlspecialchars($d['hobi']) ?>">
+        <label>Hobi:</label>
+        <input type="text" name="txtHobi" value="<?= htmlspecialchars($d['hobi']) ?>">
 
-        <label for="txtAsalSMA">Asal SLTA:</label>
-        <input type="text" id="txtAsalSMA" name="txtAsalSMA" value="<?= htmlspecialchars($d['asal_sma']) ?>">
+        <label>Asal SLTA:</label>
+        <input type="text" name="txtAsalSMA" value="<?= htmlspecialchars($d['asal_sma']) ?>">
 
-        <label for="txtKerja">Pekerjaan:</label>
-        <input type="text" id="txtKerja" name="txtKerja" value="<?= htmlspecialchars($d['pekerjaan']) ?>">
+        <label>Pekerjaan:</label>
+        <input type="text" name="txtKerja" value="<?= htmlspecialchars($d['pekerjaan']) ?>">
 
-        <label for="txtNmOrtu">Nama Orang Tua:</label>
-        <input type="text" id="txtNmOrtu" name="txtNmOrtu" value="<?= htmlspecialchars($d['ortu']) ?>">
+        <label>Nama Orang Tua:</label>
+        <input type="text" name="txtNmOrtu" value="<?= htmlspecialchars($d['ortu']) ?>">
 
-        <label for="txtNmPacar">Nama Pacar:</label>
-        <input type="text" id="txtNmPacar" name="txtNmPacar" value="<?= htmlspecialchars($d['pacar']) ?>">
+        <label>Nama Pacar:</label>
+        <input type="text" name="txtNmPacar" value="<?= htmlspecialchars($d['pacar']) ?>">
 
-        <label for="txtNmMantan">Nama Mantan:</label>
-        <input type="text" id="txtNmMantan" name="txtNmMantan" value="<?= htmlspecialchars($d['mantan']) ?>">
+        <label>Nama Mantan:</label>
+        <input type="text" name="txtNmMantan" value="<?= htmlspecialchars($d['mantan']) ?>">
         
         <br>
         <button type="submit">Simpan Perubahan</button>
