@@ -39,6 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         mysqli_stmt_bind_param($stmt, "ssssssssss", 
             $kode, $nama, $alamat, $tgl, $hobi, $asal_sma, $pekerjaan, $ortu, $pacar, $mantan
         );
+
+        if (mysqli_stmt_execute($stmt)) {
+            $_SESSION['flash_sukses_bio'] = 'Biodata Pengunjung berhasil disimpan!';
+            unset($_SESSION['old_bio']); 
+        }
         
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
