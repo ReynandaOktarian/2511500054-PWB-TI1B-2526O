@@ -32,6 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $sql = "INSERT INTO biodata_pengunjung 
             (kode_pengunjung, nama_pengunjung, alamat_rumah, tgl_kunjungan, hobi, asal_slta, pekerjaan, nama_ortu, nama_pacar, nama_mantan) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            $stmt = mysqli_prepare($conn, $sql);
+
+            if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ssssssssss", 
+            $kode, $nama, $alamat, $tgl, $hobi, $asal_sma, $pekerjaan, $ortu, $pacar, $mantan
+        );
         
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
