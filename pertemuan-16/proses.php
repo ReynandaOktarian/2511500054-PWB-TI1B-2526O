@@ -43,7 +43,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         if (mysqli_stmt_execute($stmt)) {
             $_SESSION['flash_sukses_bio'] = 'Biodata Pengunjung berhasil disimpan!';
             unset($_SESSION['old_bio']); 
+        } else {
+            if (mysqli_errno($conn) == 1062) {
+                $_SESSION['flash_error_bio'] = 'Gagal: Kode Pengunjung sudah terdaftar.';
+            } else {
+                $_SESSION['flash_error_bio'] = 'Gagal menyimpan data ke database.';
+            }
+            $_SESSION['old_bio'] = $_POST; 
         }
+        mysqli_stmt_close($stmt);
+    } else {
+        $_SESSION['flash_error_bio'] = 'Terjadi kesalahan sistem (Statement Error).';
+    }
+
+    redirect_ke('index.php#biodata');
+      
         
 #cek method form, hanya izinkan POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

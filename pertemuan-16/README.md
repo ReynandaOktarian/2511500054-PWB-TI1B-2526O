@@ -9,4 +9,6 @@ Kelompok: TI1B<br>
 <tr>
 <li>Mengeksrak bahan uas di elearning</li>
 <li>Membuat tabel baru bernama biodata_pengunjung</li>
+<li>Mengubah isi proses.php</li>
+<li>Menyelesaikan Proses.php</li>
 </tr>
