@@ -11,5 +11,6 @@ Kelompok: TI1B<br>
 <li>Membuat tabel baru bernama biodata_pengunjung</li>
 <li>Mengubah isi proses.php</li>
 <li>Menyelesaikan Proses.php</li>
-<li>Menambahakan kodingan di read.php<li>
+<li>Menambahkan kodingan di read.php<li>
+<li>Membuat file baru Proses_update_pengunjung.php</li>
 </tr>
